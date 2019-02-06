@@ -1,9 +1,9 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
 'use strict'
 
 const cli = require('./index')
 const pkg = require('./package.json')
-const argv = require('rasper')()
+const argv = require('rasper')(process.argv.slice(2))
 let options = {}
 
 if (argv.v || argv.version) {
@@ -85,6 +85,6 @@ if (argv.y && argv.y !== true) {
 }
 
 if (argv._[0]) {
-	options.source = argv._[0]
+	options.source = argv._
 	cli(options)
 }

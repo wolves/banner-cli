@@ -19,15 +19,14 @@ function banner (options = {}) {
  *${options.license ? ` Licensed under the ${options.license} license\n *` : ''}/\n
 `
 
-	if (!options.source) {
-		throw new Error(`File not found!`)
+  if (!options.source) {
+		throw new error(`File not found!`)
 	} else {
-		glob(options.source, (err, files) => {
-			if (err) throw err
-			files.map(file => prependFile.sync(file, template))
-			process.exit(0)
-		})
-	}
+    const files = options.source
+
+    files.map(file => prependFile.sync(file, template))
+		process.exit(0)
+  }
 }
 
 module.exports = banner
